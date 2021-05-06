@@ -3,19 +3,11 @@ import React from "react";
 export default function PlayerPanel(props) {
 
 
-
-
-  const renderShip = (length) => {
-   return props.ships
-      .filter((ship) => ship.length === length)
-      .map((ship, i) => {
-        return (
-          <div
-            key={i}
-            className={"ship" + ship.length}
-            style={{ backgroundColor: ship.color }}
-          ></div>
-        );
+  const renderShipsOfLength = (length) => {
+    return props.ships
+      .filter((ship) => ship.props.length === length)
+      .map((ship) => {
+        return ship;
       });
   };
   return (
@@ -26,16 +18,10 @@ export default function PlayerPanel(props) {
         <div className="timer">Timer:</div>
       </div>
       <div className="ships">
-        <div>{renderShip(4)}</div>
-        <div>
-        {renderShip(3)}
-        </div>
-        <div>
-        {renderShip(2)}
-        </div>
-        <div>
-        {renderShip(1)}
-        </div>
+        <div>{renderShipsOfLength(4)}</div>
+        <div>{renderShipsOfLength(3)}</div>
+        <div>{renderShipsOfLength(2)}</div>
+        <div>{renderShipsOfLength(1)}</div>
       </div>
     </div>
   );
