@@ -1,0 +1,57 @@
+$field-size: 200px;
+.battle-field-container {
+
+  .field-name {
+    margin: 0;
+  }
+
+.field-container {
+  display              : grid;
+  grid-template-columns: 0.1fr 1.9fr;
+  grid-template-rows   : 0.1fr 1.9fr;
+  gap                  : 0px 0px;
+  grid-template-areas  :
+    "numbers numbers"
+    "letters field-grid";
+  .field-grid {
+    grid-area            : field-grid;
+    display              : grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows   : repeat(10, 1fr);
+    gap                  : 0px 0px;
+
+    width : $field-size;
+    height: $field-size;
+    border: 2px solid rgb(84, 84, 84);
+
+    .cell {
+
+      border: 1px solid grey;
+    }
+  }
+
+  .numbers {
+    display  : flex;
+    grid-area: numbers;
+    justify-self: flex-end;
+    margin: 5px 0px;
+    width: $field-size;
+    &>* {
+      width: 10%;
+    }
+
+  }
+
+  .letters {
+    display       : flex;
+    flex-direction: column;
+   
+    margin: 0px 5px;
+    height: $field-size;
+    &>* {
+      height: 10%;
+    }
+  }
+}
+
+}

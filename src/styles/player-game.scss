@@ -1,0 +1,12 @@
+.game-container {
+
+    h3 {
+        margin: 0px;
+    }
+    .fields {
+        display: flex;
+        &>* {
+            margin: 20px;
+        }
+    }
+}
