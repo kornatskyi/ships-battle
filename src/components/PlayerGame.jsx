@@ -6,7 +6,7 @@ import Ship from "./Ship.jsx";
 export default function PlayerGame(props) {
   const [color, setColor] = useState("rgb(211, 211, 211)");
 
-  const [shipMemory, setShipMemory] = useState({});
+  const [shipRegister, setShipRegister] = useState(<Ship />);
   const [trigers, setTrigers] = useState([
     false,
     false,
@@ -20,7 +20,23 @@ export default function PlayerGame(props) {
     false,
   ]);
   const putShipInTheMemory = (e) => {
-    setShipMemory(ships[e.target.getAttribute("shipnumber")]);
+      if(e.target.getAttribute("shipnumber") == shipRegister.props.shipNumber) {
+        setShipRegister(<Ship />);
+        let trigersArr = []
+        trigers.forEach((triger, i) => {
+    
+            if(i == e.target.getAttribute("shipnumber")) {
+                trigersArr.push(!triger)
+            } else {
+    
+    
+                trigersArr.push(false)
+            }
+        })
+        setTrigers(trigersArr)
+        return;
+      }
+    setShipRegister(ships[e.target.getAttribute("shipnumber")]);
     let trigersArr = []
     trigers.forEach((triger, i) => {
 
@@ -36,8 +52,7 @@ export default function PlayerGame(props) {
     setColor("red");
   };
 
-  console.log(trigers);
-  console.log(shipMemory);
+
   const ships = [
     <Ship
       key={0}
@@ -127,9 +142,9 @@ export default function PlayerGame(props) {
     <div className="game-container">
       <h3>{props.name}</h3>
       <div className="fields">
-        <BattleField isMyField={true} ships={ships} />
+        <BattleField isMyField={true} ships={ships} shipRegister={shipRegister} />
         <BattleField isMyField={false} />
-        <PlayerPanel ships={ships} color={color} />
+        <PlayerPanel ships={ships} color={color}  />
       </div>
     </div>
   );
