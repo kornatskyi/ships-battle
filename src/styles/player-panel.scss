@@ -1,5 +1,4 @@
 
-
 .player-panel-constainer {
     .control {
         padding-top: 30px ;
@@ -32,22 +31,22 @@
             }
             display: flex;
             .ship4 {
-                width: calc(4 * #{$ship-sector-zise});
-                height: $ship-sector-zise;
+                width: calc(4 * #{$cell-size});
+                height: $cell-size;
             }
             .ship3 {
-                width: calc(3 * #{$ship-sector-zise});
-                height: $ship-sector-zise;
+                width: calc(3 * #{$cell-size});
+                height: $cell-size;
     
             }
             .ship2 {
-                width: calc(2 * #{$ship-sector-zise});
-                height: $ship-sector-zise;
+                width: calc(2 * #{$cell-size});
+                height: $cell-size;
     
             }
             .ship1 {
-                width: calc(1 * #{$ship-sector-zise});
-                height: $ship-sector-zise;
+                width: calc(1 * #{$cell-size});
+                height: $cell-size;
     
             }
         }
