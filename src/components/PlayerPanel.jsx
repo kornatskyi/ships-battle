@@ -31,7 +31,7 @@ export default function PlayerPanel(props) {
         <button
           className="ready"
           onClick={() => {
-            dispatch(changeField());
+            dispatch(changeField([{x: 5, y: 7}, {x: 3, y: 6},]));
             console.log(field);
           }}
         >

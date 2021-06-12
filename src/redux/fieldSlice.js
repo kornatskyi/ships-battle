@@ -17,12 +17,12 @@ export const fieldSlice = createSlice({
     ]
   },
   reducers: {
-    changeField: (state) => {
-      const {x, y} = state;
-
-      state.forEach(cooedinate => {})
-
-      state.grid[x][y] = 1;
+    //action.paiload should looks like [{x:<number>, y:<number>},{x:<number>, y:<number>} ... {x:<number>, y:<number>}]
+    changeField: (state, action) => {
+      console.log(state);
+      action.payload.forEach(coordinate => {
+        state.grid[coordinate.x][coordinate.y] = 1;
+      })
     }
   },
 })
