@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import BattleField from "./BattleField.jsx";
+import MyBattleField from "./MyBattleField.jsx";
+import EnemiesBattleField from "./EnemiesBattleField.jsx";
 import PlayerPanel from "./PlayerPanel.jsx";
 import Ship from "./Ship.jsx";
 
@@ -20,8 +21,8 @@ export default function PlayerGame(props) {
     <div className="game-container">
       <h3>{props.name}</h3>
       <div className="fields">
-        <BattleField isMyField={true}  shipType={shipTypeRegister} />
-        <BattleField isMyField={false} />
+        <MyBattleField isMyField={true}  shipType={shipTypeRegister} />
+        <EnemiesBattleField />
         <PlayerPanel  color={color} shipType={getShipType}/>
       </div>
     </div>

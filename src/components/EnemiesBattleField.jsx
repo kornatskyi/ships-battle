@@ -2,26 +2,20 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import Ship from "./Ship.jsx";
 
-export default function BattleField(props) {
+import { useSelector, useDispatch } from "react-redux";
+import { changeField } from "../redux/enemiesFieldSlice";
+
+export default function EnemiesBattleField(props) {
   const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
 
-  const [shipsOnTheField, setShipsOnTheField] = useState([]);
+  const gridValues = useSelector((state) => state.enemiesField.grid);
+  const dispatch = useDispatch();
 
-  function onCellClick(e) {
-    if (props.shipType !== 0) {
-      setShipsOnTheField(
-      [...shipsOnTheField,   <Ship key={shipsOnTheField.length}
-        top={parseInt(e.target.id[0])}
-        left={letters.indexOf(e.target.id[1])}
-        length={props.shipType}
-        isHorizontalOriintation={true}
-      />]
-      );
-    } else {
-      console.log("choose a ship to set up");
-    }
-  }
+  const cellColor = (i) => {
+    if (gridValues[i]) return { backgroundColor: "red" };
+    return { backgroundColor: "blue" };
+  };
 
   const fillGrid = () => {
     const arr = [];
@@ -30,8 +24,16 @@ export default function BattleField(props) {
         <div
           key={i}
           id={numbers[Math.floor(i / 10)] + letters[i % 10]}
+          value={i}
+          data-cell-number={i}
+          style={cellColor(i)}
+          onClick={(e) => {
+            console.log(e.target.attributes["data-cell-number"].value);
+            dispatch(
+              changeField(e.target.attributes["data-cell-number"].value)
+            );
+          }}
           className="cell"
-          onClick={onCellClick}
         ></div>
       );
     }
@@ -41,7 +43,7 @@ export default function BattleField(props) {
   return (
     <div className="battle-field-container">
       <h4 className="field-name">
-        {props.isMyField ? "My field" : "Enemy's field"}
+        Enemy's field
       </h4>
       <div className="field-container">
         <div className="numbers">
@@ -56,7 +58,7 @@ export default function BattleField(props) {
         </div>
         <div className="field-grid">
           {fillGrid()}
-          {shipsOnTheField}
+          {/* {shipsOnTheField} */}
         </div>
       </div>
     </div>

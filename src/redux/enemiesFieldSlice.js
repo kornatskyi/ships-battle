@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-export const fieldSlice = createSlice({
-  name: 'field',
+export const enemiesFieldSlice = createSlice({
+  name: 'enemiesField',
   initialState: {
     grid: [
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -20,17 +20,11 @@ export const fieldSlice = createSlice({
     changeField: (state, action) => {
       state.grid[action.payload] = 1;
 
-    },
-    setShipOnTheField:(state, action) => {
-        action.payload.forEach(cellNumber => {
-          state.grid[cellNumber] = 1;
-        })
     }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { changeField, setShipOnTheField } = fieldSlice.actions
+export const { changeField } = enemiesFieldSlice.actions
 
-export default fieldSlice.reducer
-
+export default enemiesFieldSlice.reducer
