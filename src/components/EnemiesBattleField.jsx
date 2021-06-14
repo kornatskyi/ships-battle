@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import Ship from "./Ship.jsx";
 
 import { useSelector, useDispatch } from "react-redux";
-import { changeEnemiesField } from "../redux/enemiesFieldSlice";
 
 export default function EnemiesBattleField(props) {
   const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -28,10 +27,6 @@ export default function EnemiesBattleField(props) {
           data-cell-number={i}
           style={cellColor(i)}
           onClick={(e) => {
-            console.log(e.target.attributes["data-cell-number"].value);
-            dispatch(
-              changeEnemiesField(e.target.attributes["data-cell-number"].value)
-            );
           }}
           className="cell"
         ></div>

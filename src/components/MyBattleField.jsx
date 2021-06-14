@@ -3,20 +3,42 @@ import ReactDOM from "react-dom";
 import Ship from "./Ship.jsx";
 
 import { useSelector, useDispatch } from "react-redux";
-import { changeField, setShipOnTheField } from "../redux/fieldSlice";
+import { placeMyShip } from "../redux/actions";
 
+const [VERTICAL, HORISONTAL] = ["VERTICAL", "HORISONTAL"];
+
+const getArrayOfCoordinates = (coordinate, length) => {
+  const arr = [];
+  for (let i = 0; i < length; i++) {
+    arr.push(coordinate + i * 10);
+    return arr;
+  }
+};
 
 export default function MyBattleField(props) {
   const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
 
-  // const gridValues = useSelector((state) => state.myField.grid);
+  const gridValues = useSelector((state) => state.myField.grid);
+  const bufferShip = useSelector((state) => state.ship);
   const dispatch = useDispatch();
 
   const cellColor = (i) => {
-    // if(gridValues[i]) return {backgroundColor: "red"};
-    return {backgroundColor: "blue"}
-  }
+    if (gridValues[i]) return { backgroundColor: "red" };
+    return { backgroundColor: "blue" };
+  };
+
+  const placeShip = (coordinate, direction, length) => {
+    if (direction === VERTICAL) {
+      if ((coordinate % 10) + length > 9) {
+        console.log("Can't set it here");
+      } else {
+        return [...getArrayOfCoordinates(coordinate, length)];
+      }
+    } else {
+      console.log('horisontal');
+    }
+  };
 
   const fillGrid = () => {
     const arr = [];
@@ -30,7 +52,8 @@ export default function MyBattleField(props) {
           style={cellColor(i)}
           onClick={(e) => {
             console.log(e.target.attributes["data-cell-number"].value);
-            dispatch(setShipOnTheField([4,5,6]))
+            console.log(gridValues);
+            dispatch(placeMyShip([i]));
           }}
           className="cell"
         ></div>

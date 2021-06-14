@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { setTest, setShip, clearState } from "../redux/actions";
+
 
 export default function PlayerPanel(props) {
-  const test = useSelector((state) => state.field.grid);
-  const dispatch = useDispatch();
+
 
   useEffect(() => {
     console.log(document.activeElement);
@@ -31,8 +30,6 @@ export default function PlayerPanel(props) {
         <button
           className="ready"
           onClick={() => {
-            console.log(test);
-            dispatch(setShip([23]))
           }}
         >
           I'm ready

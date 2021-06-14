@@ -1,3 +1,3 @@
-export const SET_TEST = "SET_TEST";
-export const ADD_ARTICLE = "ADD_ARTICLE";
-export const SET_SHIP = "SET_SHIP";
+export const PLACE_MY_SHIP = "PLACE_MY_SHIP";
+export const ROTATE = "ROTATE";
+export const SET_LENGTH = "SET_LENGTH";

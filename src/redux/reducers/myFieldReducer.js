@@ -1,4 +1,4 @@
-import { SET_SHIP } from "../actionTypes";
+import { PLACE_MY_SHIP } from "../actionTypes";
 import { createReducer } from '@reduxjs/toolkit'
 
 
@@ -17,9 +17,9 @@ const initialState = {
     ]
 };
 //using createReducer to simplify code. it makes possible to write mutable code
-const fieldReducer = createReducer(initialState, (builder) => {
+const myFieldReducer = createReducer(initialState, (builder) => {
     builder
-        .addCase(SET_SHIP, (state, action) => {
+        .addCase(PLACE_MY_SHIP, (state, action) => {
             // "mutate" the array by calling push()
             action.payload.forEach(coordinate => {
                 state.grid[coordinate] = 1;
@@ -43,4 +43,4 @@ const fieldReducer = createReducer(initialState, (builder) => {
 
 })
 
-export default fieldReducer;
+export default myFieldReducer;
