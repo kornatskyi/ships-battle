@@ -1,13 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit'
-import fieldReducer from './fieldSlice'
+import fieldSlice from './fieldSlice'
 import enemiesFieldReducer from './enemiesFieldSlice'
-import {testReducer} from './testReducer'
+import { testReducer } from './testReducer'
+import fieldReducer from './reducers/fieldReducer'
 
 export default configureStore({
   reducer: {
-      myField: fieldReducer,
-      enemiesField: enemiesFieldReducer,
-      test: testReducer
+    myField: fieldSlice,
+    enemiesField: enemiesFieldReducer,
+    test: testReducer,
+    field: fieldReducer
 
   }
 })

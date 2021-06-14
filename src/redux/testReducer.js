@@ -1,4 +1,4 @@
-import {SET_TEST} from './ActionTypes'
+import {SET_TEST} from './actionTypes'
 
 export const testReducer = (state={message:"test"}, action) => {
     switch (action.type){

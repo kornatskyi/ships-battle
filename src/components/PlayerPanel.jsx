@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { setTest } from "../redux/ActionCreators";
+import { setTest, setShip, clearState } from "../redux/actions";
 
 export default function PlayerPanel(props) {
-  const test = useSelector((state) => state.test);
+  const test = useSelector((state) => state.field.grid);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function PlayerPanel(props) {
           className="ready"
           onClick={() => {
             console.log(test);
-            dispatch(setTest("Hello"))
+            dispatch(setShip([23]))
           }}
         >
           I'm ready
