@@ -17,7 +17,7 @@ export const enemiesFieldSlice = createSlice({
     ]
   },
   reducers: {
-    changeField: (state, action) => {
+    changeEnemiesField: (state, action) => {
       state.grid[action.payload] = 1;
 
     }
@@ -25,6 +25,6 @@ export const enemiesFieldSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { changeField } = enemiesFieldSlice.actions
+export const { changeEnemiesField } = enemiesFieldSlice.actions
 
 export default enemiesFieldSlice.reducer

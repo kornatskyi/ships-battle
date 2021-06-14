@@ -3,17 +3,17 @@ import ReactDOM from "react-dom";
 import Ship from "./Ship.jsx";
 
 import { useSelector, useDispatch } from "react-redux";
-import { changeField } from "../redux/enemiesFieldSlice";
+import { changeEnemiesField } from "../redux/enemiesFieldSlice";
 
 export default function EnemiesBattleField(props) {
   const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
 
-  const gridValues = useSelector((state) => state.enemiesField.grid);
+  // const gridValues = useSelector((state) => state.enemiesField.grid);
   const dispatch = useDispatch();
 
   const cellColor = (i) => {
-    if (gridValues[i]) return { backgroundColor: "red" };
+    // if (gridValues[i]) return { backgroundColor: "red" };
     return { backgroundColor: "blue" };
   };
 
@@ -30,7 +30,7 @@ export default function EnemiesBattleField(props) {
           onClick={(e) => {
             console.log(e.target.attributes["data-cell-number"].value);
             dispatch(
-              changeField(e.target.attributes["data-cell-number"].value)
+              changeEnemiesField(e.target.attributes["data-cell-number"].value)
             );
           }}
           className="cell"

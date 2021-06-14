@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 
+import { useSelector, useDispatch } from "react-redux";
+import { setTest } from "../redux/ActionCreators";
+
 export default function PlayerPanel(props) {
+  const test = useSelector((state) => state.test);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     console.log(document.activeElement);
   }, [document.activeElement]);
@@ -22,7 +28,13 @@ export default function PlayerPanel(props) {
   return (
     <div className="player-panel-constainer">
       <div className="control">
-        <button className="ready" onClick={() => {}}>
+        <button
+          className="ready"
+          onClick={() => {
+            console.log(test);
+            dispatch(setTest("Hello"))
+          }}
+        >
           I'm ready
         </button>
 
