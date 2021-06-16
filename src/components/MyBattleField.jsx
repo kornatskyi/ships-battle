@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
-import Ship from "./Ship.jsx";
 
 import { useSelector, useDispatch } from "react-redux";
-import { placeMyShip } from "../redux/actions";
+import { placeMyShip, putShipIntoTheBuffer } from "../redux/actions";
 
 const [VERTICAL, HORISONTAL] = ["VERTICAL", "HORISONTAL"];
 
@@ -25,7 +24,6 @@ export default function MyBattleField(props) {
 
   const gridValues = useSelector((state) => state.myField.grid);
   const bufferShip = useSelector((state) => state.shipsBuffer.buffer);
-  console.log("🚀 ~ bufferShip", bufferShip)
   const dispatch = useDispatch();
 
   const cellColor = (i) => {
@@ -47,9 +45,14 @@ export default function MyBattleField(props) {
         return [];
       } else {
         console.log([...getArrayOfCoordinates(coordinate, direction, length)]);
-        return [...getArrayOfCoordinates(coordinate,direction, length)];
+        return [...getArrayOfCoordinates(coordinate, direction, length)];
       }
     }
+  };
+
+  const handleMoseOver = (e) => {
+    console.log('mose over', e.target);
+
   };
 
   const fillGrid = () => {
@@ -62,14 +65,23 @@ export default function MyBattleField(props) {
           value={i}
           data-cell-number={i}
           style={cellColor(i)}
+          onMouseOver={
+            (e) => {
+              handleMoseOver(e)
+            }
+          }
           onClick={(e) => {
-            console.log(e.target.attributes["data-cell-number"].value);
-            console.log(gridValues);
-            dispatch(
-              placeMyShip(
-                shipCoordinates(i, bufferShip.direction, bufferShip.length)
-              )
-            );
+
+            // console.log(e.target.attributes["data-cell-number"].value);
+            // console.log(gridValues);
+            // dispatch(
+            //   placeMyShip(
+            //     shipCoordinates(i, bufferShip.direction, bufferShip.length)
+            //   )
+            // );
+            // dispatch(
+            //   putShipIntoTheBuffer({ length: "", direction: "HORISONTAL" })
+            // );
           }}
           className="cell"
         ></div>

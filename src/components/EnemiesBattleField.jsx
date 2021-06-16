@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
-import Ship from "./Ship.jsx";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -26,8 +25,7 @@ export default function EnemiesBattleField(props) {
           value={i}
           data-cell-number={i}
           style={cellColor(i)}
-          onClick={(e) => {
-          }}
+          onClick={(e) => {}}
           className="cell"
         ></div>
       );
@@ -37,9 +35,7 @@ export default function EnemiesBattleField(props) {
 
   return (
     <div className="battle-field-container">
-      <h4 className="field-name">
-        Enemy's field
-      </h4>
+      <h4 className="field-name">Enemy's field</h4>
       <div className="field-container">
         <div className="numbers">
           {numbers.map((number) => (
@@ -53,7 +49,6 @@ export default function EnemiesBattleField(props) {
         </div>
         <div className="field-grid">
           {fillGrid()}
-          {/* {shipsOnTheField} */}
         </div>
       </div>
     </div>
