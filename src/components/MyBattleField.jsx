@@ -7,12 +7,16 @@ import { placeMyShip } from "../redux/actions";
 
 const [VERTICAL, HORISONTAL] = ["VERTICAL", "HORISONTAL"];
 
-const getArrayOfCoordinates = (coordinate, length) => {
+const getArrayOfCoordinates = (coordinate, direction, length) => {
   const arr = [];
   for (let i = 0; i < length; i++) {
-    arr.push(coordinate + i * 10);
-    return arr;
+    if (direction === VERTICAL) {
+      arr.push(coordinate + i * 10);
+    } else {
+      arr.push(coordinate + i);
+    }
   }
+  return arr;
 };
 
 export default function MyBattleField(props) {
@@ -28,15 +32,22 @@ export default function MyBattleField(props) {
     return { backgroundColor: "blue" };
   };
 
-  const placeShip = (coordinate, direction, length) => {
+  const shipCoordinates = (coordinate, direction, length) => {
     if (direction === VERTICAL) {
-      if ((coordinate % 10) + length > 9) {
-        console.log("Can't set it here");
+      if (Math.floor(coordinate / 10) + length > 10) {
+        console.log("Can't set it here ", coordinate / 10);
+        return [];
       } else {
-        return [...getArrayOfCoordinates(coordinate, length)];
+        return [...getArrayOfCoordinates(coordinate, direction, length)];
       }
     } else {
-      console.log('horisontal');
+      if (Math.floor(coordinate % 10) + length > 10) {
+        console.log("Can't set it here ", coordinate % 10);
+        return [];
+      } else {
+        console.log([...getArrayOfCoordinates(coordinate, direction, length)]);
+        return [...getArrayOfCoordinates(coordinate,direction, length)];
+      }
     }
   };
 
@@ -53,7 +64,11 @@ export default function MyBattleField(props) {
           onClick={(e) => {
             console.log(e.target.attributes["data-cell-number"].value);
             console.log(gridValues);
-            dispatch(placeMyShip([i]));
+            dispatch(
+              placeMyShip(
+                shipCoordinates(i, bufferShip.direction, bufferShip.length)
+              )
+            );
           }}
           className="cell"
         ></div>

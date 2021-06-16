@@ -5,14 +5,14 @@ import { createReducer } from '@reduxjs/toolkit'
 const [VERTICAL, HORISONTAL] = ["VERTICAL", "HORISONTAL"];
 
 const initialState = {
-    length: 0,
+    length: 3,
     direction: HORISONTAL
 };
 //using createReducer to simplify code. it makes possible to write mutable code
 const shipReducer = createReducer(initialState, (builder) => {
     builder
         .addCase(SET_LENGTH, (state, action) => {
-
+            
             state.length = action.payload
 
         })

@@ -4,8 +4,8 @@ import shipReducer from './reducers/shipReducer'
 
 export default configureStore({
   reducer: {
-   myField: myFieldReducer,
-   ship:shipReducer
+    myField: myFieldReducer,
+    ship: shipReducer
 
   }
 })

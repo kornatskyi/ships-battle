@@ -25,3 +25,18 @@ export function rotate() {
         type: actionTypes.ROTATE,
     }
 }
+
+
+
+export function decrementShipt(payload) {
+    return {
+        type: actionTypes.PUT_SHIP_INTO_THE_BUFFER,
+        payload:payload
+    }
+}
+
+export function putShipIntoTheBuffer() {
+    return {
+        type: actionTypes.DECREMET_SHIPS,
+    }
+}
