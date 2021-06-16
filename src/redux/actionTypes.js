@@ -1,5 +1,5 @@
 export const PLACE_MY_SHIP = "PLACE_MY_SHIP";
 export const ROTATE = "ROTATE";
 export const SET_LENGTH = "SET_LENGTH";
-export const DECREMET_SHIPS = "DECREMET_SHIPS";
+export const DECREMENT_SHIPS = "DECREMENT_SHIPS";
 export const PUT_SHIP_INTO_THE_BUFFER = "PUT_SHIP_INTO_THE_BUFFER";

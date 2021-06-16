@@ -24,7 +24,8 @@ export default function MyBattleField(props) {
   const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
 
   const gridValues = useSelector((state) => state.myField.grid);
-  const bufferShip = useSelector((state) => state.ship);
+  const bufferShip = useSelector((state) => state.shipsBuffer.buffer);
+  console.log("🚀 ~ bufferShip", bufferShip)
   const dispatch = useDispatch();
 
   const cellColor = (i) => {

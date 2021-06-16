@@ -3,7 +3,7 @@ import * as actionTypes from './actionTypes';
 export function placeMyShip(payload) {
     return {
         type: actionTypes.PLACE_MY_SHIP,
-        payload:payload
+        payload: payload
     }
 }
 
@@ -16,7 +16,7 @@ export function clearState() {
 export function setLength(payload) {
     return {
         type: actionTypes.SET_LENGTH,
-        payload:payload
+        payload: payload
     }
 }
 
@@ -28,15 +28,17 @@ export function rotate() {
 
 
 
-export function decrementShipt(payload) {
+export function decrementShips(payload) {
     return {
-        type: actionTypes.PUT_SHIP_INTO_THE_BUFFER,
-        payload:payload
+        type: actionTypes.DECREMENT_SHIPS,
+        payload: payload
+
     }
 }
 
-export function putShipIntoTheBuffer() {
+export function putShipIntoTheBuffer(payload) {
     return {
-        type: actionTypes.DECREMET_SHIPS,
+        type: actionTypes.PUT_SHIP_INTO_THE_BUFFER,
+        payload: payload
     }
 }

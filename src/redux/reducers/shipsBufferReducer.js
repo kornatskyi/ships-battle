@@ -1,6 +1,7 @@
-import { DECREMET_SHIPS,PUT_SHIP_INTO_THE_BUFFER } from "../actionTypes";
+import { DECREMENT_SHIPS, PUT_SHIP_INTO_THE_BUFFER, ROTATE } from "../actionTypes";
 import { createReducer } from '@reduxjs/toolkit'
 
+const [VERTICAL, HORISONTAL] = ["VERTICAL", "HORISONTAL"];
 
 
 const initialState = {
@@ -8,13 +9,13 @@ const initialState = {
     x3: 2,
     x2: 3,
     x1: 4,
-    buffer: ""
+    buffer: { length: "", direction: HORISONTAL }
 };
 
 //using createReducer to simplify code. it makes possible to write mutable code
 const shipsBufferReducer = createReducer(initialState, (builder) => {
     builder
-        .addCase(DECREMET_SHIPS, (state, action) => {
+        .addCase(DECREMENT_SHIPS, (state, action) => {
             const { type } = action.payload
             switch (type) {
                 case 'x4':
@@ -36,7 +37,10 @@ const shipsBufferReducer = createReducer(initialState, (builder) => {
 
         })
         .addCase(PUT_SHIP_INTO_THE_BUFFER, (state, action) => {
-            state.buffer = action.payload.type;
+            state.buffer.length = action.payload.length;
+        })
+        .addCase(ROTATE, (state) => {
+            state.buffer.direction = (state.buffer.direction === VERTICAL ? HORISONTAL : VERTICAL);
         })
 
 })
